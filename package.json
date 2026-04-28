@@ -1,0 +1,13 @@
+{
+  "name": "nanxin-chat-proxy",
+  "version": "1.0.0",
+  "description": "南信工程对话接口",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "node-fetch": "^3.3.0"
+  }
+}
