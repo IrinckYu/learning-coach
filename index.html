@@ -717,9 +717,368 @@
       .msg-wrapper { max-width: 92%; }
       #inputArea { bottom: 10px; width: calc(100% - 20px); }
     }
+
+    /* ═══════════════════════ MAIN CARD (mainCard) ═══════════════════════ */
+    .main-card-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .main-card {
+      display: block;
+      text-decoration: none;
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px 16px 22px;
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--gradient-5g);
+      border-radius: 0 2px 2px 0;
+    }
+
+    .main-card:hover {
+      border-color: var(--border-focus);
+      background: var(--bg-hover);
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-2px);
+    }
+
+    .main-card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary-glow);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .main-card-title::after {
+      content: '\2192';
+      font-size: 14px;
+      opacity: 0.5;
+      transition: var(--transition-fast);
+    }
+
+    .main-card:hover .main-card-title::after {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+    .main-card-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .main-card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .main-card-actions button {
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid;
+    }
+
+    .btn-completed {
+      background: rgba(0,229,160,0.1);
+      border-color: rgba(0,229,160,0.3);
+      color: var(--success);
+    }
+
+    .btn-completed:hover {
+      background: rgba(0,229,160,0.2);
+      box-shadow: 0 0 12px rgba(0,229,160,0.2);
+    }
+
+    .btn-completed:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-not-completed {
+      background: rgba(255,167,38,0.1);
+      border-color: rgba(255,167,38,0.3);
+      color: #ffa726;
+    }
+
+    .btn-not-completed:hover {
+      background: rgba(255,167,38,0.2);
+      box-shadow: 0 0 12px rgba(255,167,38,0.2);
+    }
+
+    /* ═══════════════════════ QUIZ (sideCard) ═══════════════════════ */
+    .quiz-container {
+      margin-top: 14px;
+    }
+
+    .quiz-question {
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      position: relative;
+      display: none;
+    }
+
+    .quiz-question.active {
+      display: block;
+      animation: fadeInUp 0.25s var(--ease-smooth);
+    }
+
+    .quiz-question-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .quiz-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid;
+    }
+
+    .quiz-badge.single {
+      color: var(--primary-glow);
+      border-color: rgba(0,229,255,0.3);
+      background: rgba(0,229,255,0.08);
+    }
+
+    .quiz-badge.multiple {
+      color: #ffa726;
+      border-color: rgba(255,167,38,0.3);
+      background: rgba(255,167,38,0.08);
+    }
+
+    .quiz-badge.judge {
+      color: var(--success);
+      border-color: rgba(0,229,160,0.3);
+      background: rgba(0,229,160,0.08);
+    }
+
+    .quiz-question-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      font-size: 13px;
+      color: var(--text-secondary);
+      background: transparent;
+    }
+
+    .quiz-option:hover {
+      border-color: rgba(0,229,255,0.3);
+      background: rgba(0,229,255,0.04);
+      color: var(--text);
+    }
+
+    .quiz-option.selected {
+      border-color: var(--primary-glow);
+      background: rgba(0,229,255,0.08);
+      color: var(--text);
+      box-shadow: 0 0 10px rgba(0,229,255,0.1);
+    }
+
+    .quiz-option .opt-marker {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 600;
+      transition: var(--transition-fast);
+    }
+
+    .quiz-option.selected .opt-marker {
+      border-color: var(--primary-glow);
+      background: var(--primary-glow);
+      color: var(--bg);
+    }
+
+    .quiz-option.correct {
+      border-color: var(--success);
+      background: rgba(0,229,160,0.08);
+    }
+
+    .quiz-option.correct .opt-marker {
+      border-color: var(--success);
+      background: var(--success);
+      color: var(--bg);
+    }
+
+    .quiz-option.wrong {
+      border-color: var(--error);
+      background: rgba(255,77,106,0.08);
+    }
+
+    .quiz-option.wrong .opt-marker {
+      border-color: var(--error);
+      background: var(--error);
+      color: #fff;
+    }
+
+    .quiz-option.disabled {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .quiz-nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .quiz-nav button {
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid;
+    }
+
+    .quiz-nav-btn {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text-secondary);
+    }
+
+    .quiz-nav-btn:hover {
+      border-color: var(--border-focus);
+      color: var(--text);
+      background: rgba(0,229,255,0.04);
+    }
+
+    .quiz-submit-btn {
+      background: var(--gradient-5g);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 0 12px rgba(0,229,255,0.2);
+    }
+
+    .quiz-submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(0,229,255,0.3);
+    }
+
+    .quiz-submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .quiz-result {
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 500;
+      animation: fadeInUp 0.3s var(--ease-smooth);
+    }
+
+    .quiz-result.correct {
+      background: rgba(0,229,160,0.1);
+      border: 1px solid rgba(0,229,160,0.3);
+      color: var(--success);
+    }
+
+    .quiz-result.wrong {
+      background: rgba(255,77,106,0.1);
+      border: 1px solid rgba(255,77,106,0.3);
+      color: var(--error);
+    }
+
+    /* ═══════════════════════ FIREWORKS CANVAS ═══════════════════════ */
+    #fireworksCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      pointer-events: none;
+      display: none;
+    }
+
+    .next-chapter-btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 999px;
+      background: var(--gradient-5g);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 0 16px rgba(0,229,255,0.25);
+      animation: fadeInUp 0.4s var(--ease-smooth);
+    }
+
+    .next-chapter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 24px rgba(0,229,255,0.4);
+    }
+
+    .next-chapter-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Fireworks Canvas -->
+  <canvas id="fireworksCanvas"></canvas>
 
   <!-- 5G Network Background -->
   <div class="bg-network">
@@ -888,6 +1247,7 @@
 
       let fullText = '';
       let started = false;
+      let outCompleteData = null;
 
       try {
         const res = await fetch('/api/chat', {
@@ -901,6 +1261,7 @@
         const reader = res.body.getReader();
         const decoder = new TextDecoder();
         let buf = '';
+        let currentEvent = '';
 
         while (true) {
           const { done, value } = await reader.read();
@@ -908,30 +1269,45 @@
           buf += decoder.decode(value, { stream: true });
           const lines = buf.split('\n');
           buf = lines.pop();
-          let currentEvent = '';
           for (const line of lines) {
             if (line.startsWith('event:')) {
               currentEvent = line.slice(6).trim();
               continue;
             }
             if (!line.startsWith('data:')) continue;
-            if (currentEvent !== 'ANSWER') { currentEvent = ''; continue; }
-            currentEvent = '';
-            try {
-              const json = JSON.parse(line.slice(5));
-              const chunk = json?.text || '';
-              if (chunk) {
-                if (!started) {
-                  botMsg.wrapper.classList.remove('thinking');
-                  botMsg.bubble.textContent = '';
-                  started = true;
+            if (currentEvent === 'ANSWER') {
+              currentEvent = '';
+              try {
+                const json = JSON.parse(line.slice(5));
+                const chunk = json?.text || '';
+                if (chunk) {
+                  if (!started) {
+                    botMsg.wrapper.classList.remove('thinking');
+                    botMsg.bubble.textContent = '';
+                    started = true;
+                  }
+                  fullText += chunk;
+                  botMsg.bubble.textContent = fullText;
+                  scrollToBottom();
                 }
-                fullText += chunk;
-                botMsg.bubble.textContent = fullText;
-                scrollToBottom();
-              }
-            } catch {}
+              } catch {}
+            } else if (currentEvent === 'OUT_COMPLETE') {
+              currentEvent = '';
+              try {
+                const json = JSON.parse(line.slice(5));
+                if (json && json.eventData) {
+                  outCompleteData = json.eventData;
+                }
+              } catch {}
+            } else {
+              currentEvent = '';
+            }
           }
+        }
+
+        // Process OUT_COMPLETE event data after stream ends
+        if (outCompleteData) {
+          handleOutComplete(outCompleteData, botMsg);
         }
       } catch (err) {
         botMsg.wrapper.classList.remove('thinking');
@@ -951,6 +1327,445 @@
 
     function scrollToBottom() {
       messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    /* ═══════════════════ UTILITY ═══════════════════ */
+    function escapeHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    /* ═══════════════════ OUT_COMPLETE HANDLER ═══════════════════ */
+    function handleOutComplete(eventData, botMsg) {
+      const { functionName, parameters } = eventData;
+      if (!functionName) return;
+
+      if (functionName === 'mainCard') {
+        if (parameters) renderMainCard(parameters, botMsg.bubble);
+      } else if (functionName === 'sideCard') {
+        if (parameters) renderSideCard(parameters, botMsg.bubble);
+      } else if (functionName === 'congrates') {
+        renderFireworks();
+        renderNextChapterButton(botMsg.bubble);
+      }
+      scrollToBottom();
+    }
+
+    /* ═══════════════════ mainCard — CLICKABLE CARDS ═══════════════════ */
+    function renderMainCard(parameters, bubble) {
+      const container = document.createElement('div');
+      container.className = 'main-card-container';
+      parameters.forEach(item => {
+        const card = document.createElement('a');
+        card.className = 'main-card';
+        card.href = item.url || item.link || '#';
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+        card.innerHTML =
+          '<div class="main-card-title">' + escapeHtml(item.title || '') + '</div>' +
+          '<div class="main-card-desc">' + escapeHtml(item.description || '') + '</div>';
+        container.appendChild(card);
+      });
+
+      // Collect taskIds from parameters
+      const taskIds = parameters.map(item => item.taskId).filter(Boolean);
+
+      const actions = document.createElement('div');
+      actions.className = 'main-card-actions';
+      actions.innerHTML =
+        '<button class="btn-not-completed" onclick="onMainCardNotCompleted()">\u672a\u5b8c\u6210</button>' +
+        '<button class="btn-completed" data-taskids="' + escapeHtml(JSON.stringify(taskIds)) + '" onclick="onMainCardCompleted(this)">\u5df2\u5b8c\u6210</button>';
+      container.appendChild(actions);
+
+      bubble.appendChild(container);
+    }
+
+    function onMainCardNotCompleted() {
+      alert('\u8bf7\u5b8c\u6210\u4e3b\u7ebf\u4efb\u52a1\u3002');
+    }
+
+    async function onMainCardCompleted(btn) {
+      btn.disabled = true;
+      btn.textContent = '\u63d0\u4ea4\u4e2d...';
+      try {
+        const taskIds = JSON.parse(btn.dataset.taskids || '[]');
+        const skipSide = taskIds.some(id => id === 15 || id === 16 || id === 17);
+
+        const patches = [
+          { path: 'state.firstEntry', value: false },
+          { path: 'state.nodeState.mainQuest.completed', value: true }
+        ];
+        if (skipSide) {
+          patches.push({ path: 'state.nodeState.sideQuest.round', value: 3 });
+        }
+        if (taskIds.indexOf(17) !== -1) {
+          patches.push({ path: 'state.allCompleted', value: true });
+        }
+
+        const res = await fetch('/api/userState/patch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userNid: '61tpO8lxdx', patches: patches }),
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        btn.textContent = '\u2713 \u5df2\u63d0\u4ea4';
+        btn.style.pointerEvents = 'none';
+        // Automatically send a chat message to trigger sideCard
+        input.value = '\u5df2\u5b8c\u6210\u4e3b\u7ebf\u4efb\u52a1';
+        send();
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = '\u5df2\u5b8c\u6210';
+        alert('\u63d0\u4ea4\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5');
+        console.error('userState patch error:', err);
+      }
+    }
+
+    /* ═══════════════════ sideCard — INTERACTIVE QUIZ ═══════════════════ */
+    function renderSideCard(parameters, bubble) {
+      const questions = parameters.filter(p => p.question && p.options);
+      if (questions.length === 0) return;
+      const total = questions.length;
+
+      const container = document.createElement('div');
+      container.className = 'quiz-container';
+      container.dataset.current = '0';
+      container._questions = questions;
+
+      questions.forEach((q, qIdx) => {
+        const qDiv = document.createElement('div');
+        qDiv.className = 'quiz-question' + (qIdx === 0 ? ' active' : '');
+        qDiv.dataset.answer = q.answer || '';
+        qDiv.dataset.explanation = q.explanation || '';
+        qDiv.dataset.type = q.type || 'single';
+        qDiv.dataset.index = qIdx;
+
+        const typeLabels = { single: '\u5355\u9009\u9898', multiple: '\u591a\u9009\u9898', judge: '\u5224\u65ad\u9898' };
+        const typeLabel = typeLabels[q.type] || '\u9898\u76ee';
+        const typeCls = q.type || 'single';
+
+        let optHtml = '';
+        (q.options || []).forEach(opt => {
+          const key = opt.key || '';
+          const text = opt.text || '';
+          optHtml +=
+            '<div class="quiz-option" data-value="' + escapeHtml(key) + '" onclick="toggleQuizOption(this)">' +
+            '<span class="opt-marker">' + escapeHtml(key) + '</span>' +
+            '<span>' + escapeHtml(text) + '</span>' +
+            '</div>';
+        });
+
+        // Build nav buttons
+        let navHtml = '<div class="quiz-nav">';
+        if (qIdx > 0) {
+          navHtml += '<button class="quiz-nav-btn" onclick="quizNav(this,-1)">\u4e0a\u4e00\u9898</button>';
+        }
+        if (qIdx < total - 1) {
+          navHtml += '<button class="quiz-nav-btn" onclick="quizNav(this,1)">\u4e0b\u4e00\u9898</button>';
+        }
+        if (qIdx === total - 1) {
+          navHtml += '<button class="quiz-submit-btn" onclick="submitAllQuiz(this)">\u63d0\u4ea4\u7b54\u6848</button>';
+        }
+        navHtml += '</div>';
+
+        qDiv.innerHTML =
+          '<div class="quiz-question-header">' +
+          '<span class="quiz-badge ' + typeCls + '">' + typeLabel + '</span>' +
+          '<span style="font-size:12px;color:var(--text-muted)">\u7b2c ' + (qIdx + 1) + ' / ' + total + ' \u9898</span>' +
+          '</div>' +
+          '<div class="quiz-question-text">' + escapeHtml(q.question || '') + '</div>' +
+          '<div class="quiz-options">' + optHtml + '</div>' +
+          navHtml;
+
+        container.appendChild(qDiv);
+      });
+
+      bubble.appendChild(container);
+    }
+
+    function quizNav(btn, dir) {
+      const container = btn.closest('.quiz-container');
+      const current = parseInt(container.dataset.current);
+      const next = current + dir;
+      const questions = container.querySelectorAll('.quiz-question');
+      if (next < 0 || next >= questions.length) return;
+      questions[current].classList.remove('active');
+      questions[next].classList.add('active');
+      container.dataset.current = next;
+      scrollToBottom();
+    }
+
+    function toggleQuizOption(el) {
+      const question = el.closest('.quiz-question');
+      if (question.classList.contains('answered')) return;
+
+      const type = question.dataset.type;
+      if (type === 'multiple') {
+        el.classList.toggle('selected');
+      } else {
+        question.querySelectorAll('.quiz-option.selected').forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+      }
+    }
+
+    async function submitAllQuiz(btn) {
+      const container = btn.closest('.quiz-container');
+      const questionEls = container.querySelectorAll('.quiz-question');
+      const origQuestions = container._questions || [];
+      btn.disabled = true;
+      btn.textContent = '\u63d0\u4ea4\u4e2d...';
+
+      // 1. Collect user answers and grade each question
+      let correctCount = 0;
+      const preResult = [];
+
+      questionEls.forEach((question, idx) => {
+        if (question.classList.contains('answered')) return;
+        question.classList.add('answered');
+
+        const correctAnswer = question.dataset.answer;
+        const explanation = question.dataset.explanation;
+
+        let userAnswer = '';
+        question.querySelectorAll('.quiz-option.selected').forEach(el => {
+          userAnswer += el.dataset.value;
+        });
+
+        const sortedUser = userAnswer.split('').sort().join('');
+        const sortedCorrect = correctAnswer.split('').sort().join('');
+        const isCorrect = sortedUser === sortedCorrect;
+        if (isCorrect) correctCount++;
+
+        question.querySelectorAll('.quiz-option').forEach(opt => {
+          opt.classList.add('disabled');
+          const val = opt.dataset.value;
+          if (correctAnswer.includes(val)) opt.classList.add('correct');
+          if (opt.classList.contains('selected') && !correctAnswer.includes(val)) opt.classList.add('wrong');
+        });
+
+        const result = document.createElement('div');
+        result.className = 'quiz-result ' + (isCorrect ? 'correct' : 'wrong');
+        let resultText = isCorrect
+          ? '\u2713 \u56de\u7b54\u6b63\u786e\uff01'
+          : '\u2717 \u56de\u7b54\u9519\u8bef\uff0c\u6b63\u786e\u7b54\u6848\u662f\uff1a' + correctAnswer;
+        if (explanation) resultText += '\n\u89e3\u6790\uff1a' + explanation;
+        result.textContent = resultText;
+        result.style.whiteSpace = 'pre-wrap';
+        question.querySelector('.quiz-options').after(result);
+
+        // Build preResult entry from original question data
+        const orig = origQuestions[idx] || {};
+        preResult.push({
+          id: orig.id || '',
+          type: orig.type || '',
+          question: orig.question || '',
+          options: orig.options || [],
+          answer: orig.answer || '',
+          userAnswer: userAnswer,
+          explanation: orig.explanation || '',
+          knowledgePoint: orig.knowledgePoint || '',
+        });
+      });
+
+      // Show first question with results
+      questionEls.forEach(q => q.classList.remove('active'));
+      questionEls[0].classList.add('active');
+      container.dataset.current = '0';
+      scrollToBottom();
+
+      // 2. Query current state, build patches, call patch API
+      try {
+        const stateRes = await fetch('/api/userState?v4Code=u9QaKqc7qM&userNid=61tpO8lxdx');
+        if (!stateRes.ok) throw new Error('query state failed');
+        const stateData = await stateRes.json();
+        const sideQuest = stateData.state.nodeState.sideQuest;
+
+        const newRound = (sideQuest.round || 0) + 1;
+        const newTotalResult = (sideQuest.totalResult || []).concat(preResult);
+        const newScore = (sideQuest.score || 0) + correctCount * 10;
+
+        await fetch('/api/userState/patch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userNid: '61tpO8lxdx',
+            patches: [
+              { path: 'state.nodeState.sideQuest.round', value: newRound },
+              { path: 'state.nodeState.sideQuest.preResult', value: preResult },
+              { path: 'state.nodeState.sideQuest.totalResult', value: newTotalResult },
+              { path: 'state.nodeState.sideQuest.isAnswered', value: true },
+              { path: 'state.nodeState.sideQuest.score', value: newScore },
+            ],
+          }),
+        });
+        btn.textContent = '\u2713 \u5df2\u63d0\u4ea4';
+        // Automatically send a chat message after state update
+        input.value = '\u5df2\u5b8c\u6210\u652f\u7ebf\u4efb\u52a1';
+        send();
+      } catch (err) {
+        console.error('submitAllQuiz patch error:', err);
+        btn.textContent = '\u63d0\u4ea4\u5931\u8d25';
+      }
+    }
+
+    /* ═══════════════════ congrates — NEXT CHAPTER ═══════════════════ */
+    function renderNextChapterButton(bubble) {
+      const btn = document.createElement('button');
+      btn.className = 'next-chapter-btn';
+      btn.textContent = '\u8fdb\u5165\u4e0b\u4e00\u7ae0';
+      btn.onclick = function() { onNextChapter(btn); };
+      bubble.appendChild(btn);
+    }
+
+    async function onNextChapter(btn) {
+      btn.disabled = true;
+      btn.textContent = '\u8fdb\u5165\u4e2d...';
+      try {
+        const res = await fetch('/api/userState/delete?v4Code=u9QaKqc7qM&userNid=61tpO8lxdx', {
+          method: 'POST',
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        btn.textContent = '\u2713 \u5df2\u8fdb\u5165\u4e0b\u4e00\u7ae0';
+        btn.style.pointerEvents = 'none';
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = '\u8fdb\u5165\u4e0b\u4e00\u7ae0';
+        alert('\u64cd\u4f5c\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5');
+        console.error('nextChapter error:', err);
+      }
+    }
+
+    /* ═══════════════════ congrates — FIREWORKS ═══════════════════ */
+    function renderFireworks() {
+      var canvas = document.getElementById('fireworksCanvas');
+      var ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.style.display = 'block';
+
+      var particles = [];
+      var rockets = [];
+      var running = true;
+      var startTime = Date.now();
+      var duration = 5000;
+
+      function random(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function Particle(x, y, hue) {
+        this.x = x;
+        this.y = y;
+        this.hue = hue;
+        this.brightness = random(50, 80);
+        this.alpha = 1;
+        var angle = random(0, Math.PI * 2);
+        var speed = random(1, 6);
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+        this.decay = random(0.01, 0.03);
+        this.gravity = 0.02;
+      }
+
+      Particle.prototype.update = function() {
+        this.vx *= 0.98;
+        this.vy *= 0.98;
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.alpha -= this.decay;
+      };
+
+      Particle.prototype.draw = function() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
+        ctx.fill();
+      };
+
+      function Rocket(x) {
+        this.x = x;
+        this.y = canvas.height;
+        this.targetY = random(canvas.height * 0.1, canvas.height * 0.4);
+        this.vy = -random(8, 12);
+        this.hue = random(0, 360);
+        this.alpha = 1;
+        this.exploded = false;
+        this.trail = [];
+      }
+
+      Rocket.prototype.update = function() {
+        this.trail.push({ x: this.x, y: this.y, alpha: 1 });
+        if (this.trail.length > 8) this.trail.shift();
+        this.trail.forEach(function(t) { t.alpha -= 0.12; });
+        this.vy += 0.08;
+        this.y += this.vy;
+        if (this.vy >= 0 || this.y <= this.targetY) {
+          this.exploded = true;
+          var count = Math.floor(random(50, 90));
+          for (var i = 0; i < count; i++) {
+            particles.push(new Particle(this.x, this.y, this.hue));
+          }
+        }
+      };
+
+      Rocket.prototype.draw = function() {
+        this.trail.forEach(function(t) {
+          if (t.alpha > 0) {
+            ctx.beginPath();
+            ctx.arc(t.x, t.y, 1.5, 0, Math.PI * 2);
+            ctx.fillStyle = 'hsla(40, 100%, 80%, ' + t.alpha + ')';
+            ctx.fill();
+          }
+        });
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+        ctx.fillStyle = 'hsl(40, 100%, 90%)';
+        ctx.fill();
+      };
+
+      function animate() {
+        if (!running) return;
+        requestAnimationFrame(animate);
+
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.globalCompositeOperation = 'lighter';
+
+        var elapsed = Date.now() - startTime;
+
+        if (elapsed < duration && Math.random() < 0.06) {
+          rockets.push(new Rocket(random(canvas.width * 0.1, canvas.width * 0.9)));
+        }
+
+        for (var r = rockets.length - 1; r >= 0; r--) {
+          rockets[r].update();
+          if (!rockets[r].exploded) {
+            rockets[r].draw();
+          } else {
+            rockets.splice(r, 1);
+          }
+        }
+
+        for (var p = particles.length - 1; p >= 0; p--) {
+          particles[p].update();
+          if (particles[p].alpha > 0) {
+            particles[p].draw();
+          } else {
+            particles.splice(p, 1);
+          }
+        }
+
+        if (elapsed > duration && rockets.length === 0 && particles.length === 0) {
+          running = false;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          canvas.style.display = 'none';
+        }
+      }
+
+      animate();
     }
 
     // Initialize welcome screen on page load
